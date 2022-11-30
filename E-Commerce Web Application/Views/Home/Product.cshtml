@@ -1,0 +1,77 @@
+﻿@using E_Commerce_Web_Application.Entity
+@model  Product
+@{
+    ViewBag.Title = "Product";
+}
+
+<div class="container pb-5 mt-5">
+    <div class="row">
+        <div class=" col-md-6">
+            <img src="/Theme/Image/pianoBackground.jpg" class="img-fluid rounded " />
+        </div>
+
+        <div class=" col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>@Model.ProductName </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="badge badge-primary"> In Stock</span>
+                    <span class="Product-number"> @Model.ProductCode</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-2">
+                    <div id="description">
+                        @Model.ProductDescription
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-5">
+                            <i class="fa-solid fa-star fa-fw" style="color: var(--fa-navy);"></i>
+                            <i class="fa-solid fa-star fa-fw" style="color: var(--fa-navy);"></i>
+                            <i class="fa-solid fa-star fa-fw" style="color: var(--fa-navy);"></i>
+                            <i class="fa-solid fa-star fa-fw" style="color: var(--fa-navy);"></i>
+                            <i class="fa-solid fa-star-half-stroke fa-fw" style="color: var(--fa-navy);"></i>
+                            <span class="badge badge-success">@Model.ProductStoct</span>
+                        </div>
+                        <div id="write-review" class="col-md-4">
+                            <command> <i class="fa-solid fa-comment fa-fw" style="color: var(--fa-navy);"></i>
+                            write a review </command>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <h4 id="Product-prices"> @Model.ProductPrice tl </h4>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <button class="btn btn-success">
+                                <i class="fa-solid fa-cart-shopping fa-fw" style="color: var(--fa-navy);"> </i>
+                                <a href="/Home/Cart/@Model.Id">  Add to Cart </a>                                   
+                            </button>
+                        </div>
+                        <div class="col-md-5">
+                            <button class="btn btn-danger">
+                                <i class="fa-solid fa-heart fa-fw" style="color: var(--fa-navy);"></i>
+                                <a href="/Home/Favorities/@Model.Id">Add to Favorities </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-md-12">
+            <nav class="nav nav-tabs flex-column flex-sm-row">
+                <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
+                <a class="flex-sm-fill text-sm-center nav-link" href="#">Longer nav link</a>
+                <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+                <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
+            </nav>
+        </div>
+    </div>
+</div>

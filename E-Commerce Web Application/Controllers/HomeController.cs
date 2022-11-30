@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_Commerce_Web_Application.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,25 +9,48 @@ namespace E_Commerce_Web_Application.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        DataContext _context = new DataContext();
+     
+        public ActionResult Home()
         {
-            return View();
+            return View(_context.Products.Where(i => i.ProductHome && i.ProductIsApproved).ToList());
         }
 
-        public ActionResult Login()
-        {
-
-            return View();
-        }
-
-        public ActionResult Register()
+        public ActionResult Login2()
         {
 
             return View();
         }
-        public ActionResult shop() {
-            return View();
 
+        public ActionResult Register2()
+        {
+
+            return View();
+        }
+        public ActionResult ProductList() // burada shop vardı //ürünlerin listelenmesi için yapıldı
+        { 
+            return View(_context.Products.Where(i => i.ProductIsApproved).ToList());
+        }
+        public ActionResult Favorities(int id)  // metod favorilere eklenmiş ürünü listeler 
+        {
+            //  -> favorilere ekleme kısmı ekstra bir sayfaya gerek duyulmadığı için ürünün detayları kısmında yapılabilir
+            // burası ekstra sayfaya ihtiyaç duyulduğu için controller'da method oluşturuldu
+            // list fonksiyonu belki burda kullanılabilir
+            return View(_context.Products.Where(i => i.Id == id).ToList());
+        }
+        public ActionResult Cart(int id) // metod sepete eklenmiş ürünü listeler 
+        {
+            //  -> sepete ekleme kısmı ekstra bir sayfaya gerek duyulmadığı için ürünün detayları kısmında yapılabilir
+            // burası ekstra sayfaya ihtiyaç duyulduğu için controller'da method oluşturuldu
+            // list fonksiyonu belki burda kullanılabilir
+            return View(_context.Products.Where(i => i.Id == id).ToList());
+        }
+
+        public ActionResult Product(int id) // ürünü ayrı sayfada görmek için belki ek bunun için ekstra controller oluşturulur.
+            // favorilere ve sepet ekleme işlemi burada yapılıyor
+        {
+
+            return View(_context.Products.Where(i => i.Id == id).FirstOrDefault());
         }
     }
 }
