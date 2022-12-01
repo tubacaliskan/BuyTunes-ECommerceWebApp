@@ -1,5 +1,5 @@
-﻿@using E_Commerce_Web_Application.Entity
-@model  IEnumerable<Product>
+﻿@using E_Commerce_Web_Application.Models
+@model  IEnumerable<ProductModel>
 @{
     ViewBag.Title = "Home";
 }
@@ -18,15 +18,16 @@
     <div class="row">
         @foreach (var product in Model)
         {
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3">
                 <div class="card">
-                    <img src="holder.js/348x200" class="card-img-top" alt="@product.ProductName">
+                    <img src="/Theme/Image/@product.ProductImage" class="card-img-top" alt="@product.ProductName">
                     <div class="card-body">
                         <h5 class="card-title"> <a href="/Home/Product/@product.Id">@product.ProductName </a></h5>
                         <p class="card-text">@product.ProductDescription</p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">@product.ProductPrice</small>
+                        <small class="text-muted ProductPrice">@product.ProductPrice <i class="fa fa-try" aria-hidden="true"></i></small>
+                        <a href="/Home/Product/@product.Id" class="btn btn-primary btn-xs float-right"> <i class="fa fa-chevron-right" aria-hidden="true"></i> Product Details</a>
                     </div>
                 </div>
 

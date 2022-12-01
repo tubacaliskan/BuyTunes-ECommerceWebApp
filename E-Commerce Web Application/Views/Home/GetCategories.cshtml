@@ -1,0 +1,57 @@
+﻿@using E_Commerce_Web_Application.Entity
+@model  IEnumerable<Category>
+
+@{
+    var SelectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+<div class="list-group mx-4">
+
+    <a href="/Home/ProductList" class="list-group-item list-group-item-action" aria-current="true" style="width: 200%">
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        All Categories
+    </a>
+
+
+    @foreach (var category in Model)
+    {
+        // amaç seçilen butonun arka fonunu aktif hale getirmek.
+        if (SelectedCategory != null)
+        {
+            if (category.Id == int.Parse(SelectedCategory.ToString()))
+            {
+                // seçilen kategori ile route id birbine eşitse
+
+                <a href="/Home/ProductList/@category.Id" class="list-group-item list-group-item-action active" aria-current="true" style="width: 200%">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    @category.Name
+                </a>
+
+            }
+            else
+            {
+                <a href="/Home/ProductList/@category.Id" class="list-group-item list-group-item-action" aria-current="true" style="width: 200%">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    @category.Name
+                </a>
+
+            }
+
+        }
+        else
+        {
+            <a href="/Home/ProductList/@category.Id" class="list-group-item list-group-item-action" aria-current="true" style="width: 200%">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                @category.Name
+            </a>
+
+        }
+
+
+    }
+    @*<button type="button" class="list-group-item list-group-item-action active" aria-current="true"> The current button</button>
+        <button type="button" class="list-group-item list-group-item-action">cadfaf</button>
+        <button type="button" class="list-group-item list-group-item-action">A third button item</button>
+        <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
+        <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>*@
+</div>

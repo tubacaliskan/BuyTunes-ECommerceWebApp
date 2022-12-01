@@ -134,9 +134,14 @@
     <Compile Include="Entity\DataInitializer.cs" />
     <Compile Include="Entity\MainCategory.cs" />
     <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\RegisterCustomer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\MainCategoryModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\RegisterCustomerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,10 +239,11 @@
     <Content Include="Views\Home\Favorities.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\GetCategories.cshtml" />
+    <Content Include="Views\Home\GetMainCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Theme\Image\" />
     <Folder Include="Theme\js\" />
   </ItemGroup>

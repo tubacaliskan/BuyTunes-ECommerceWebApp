@@ -1,4 +1,4 @@
-﻿@using E_Commerce_Web_Application.Entity
+﻿@using E_Commerce_Web_Application.Entity;
 @model  Product
 @{
     ViewBag.Title = "Product";
@@ -7,7 +7,7 @@
 <div class="container pb-5 mt-5">
     <div class="row">
         <div class=" col-md-6">
-            <img src="/Theme/Image/pianoBackground.jpg" class="img-fluid rounded " />
+            <img src="/Theme/Image/@Model.ProductImage" class="img-fluid rounded" style="width:100%" />
         </div>
 
         <div class=" col-md-6">
@@ -18,7 +18,19 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <span class="badge badge-primary"> In Stock</span>
+                    @if (@Model.ProductStoct == 0)
+                    {
+                        <span class="badge badge-success">@Model.ProductStoct In stock</span>
+                    }
+                    else if (Model.ProductStoct <= 10)
+                    {
+                        <span class="badge badge-warning">Last @Model.ProductStoct</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">No Stock</span>
+                    }
+                    @*Bu işleme daha sonra bir bak*@
                     <span class="Product-number"> @Model.ProductCode</span>
                 </div>
             </div>
@@ -34,7 +46,7 @@
                             <i class="fa-solid fa-star fa-fw" style="color: var(--fa-navy);"></i>
                             <i class="fa-solid fa-star fa-fw" style="color: var(--fa-navy);"></i>
                             <i class="fa-solid fa-star-half-stroke fa-fw" style="color: var(--fa-navy);"></i>
-                            <span class="badge badge-success">@Model.ProductStoct</span>
+
                         </div>
                         <div id="write-review" class="col-md-4">
                             <command> <i class="fa-solid fa-comment fa-fw" style="color: var(--fa-navy);"></i>
@@ -43,14 +55,14 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <h4 id="Product-prices"> @Model.ProductPrice tl </h4>
+                            <h4 id="Product-prices"> @Model.ProductPrice <i class="fa fa-try" aria-hidden="true"></i> </h4>
                         </div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-md-4">
                             <button class="btn btn-success">
                                 <i class="fa-solid fa-cart-shopping fa-fw" style="color: var(--fa-navy);"> </i>
-                                <a href="/Home/Cart/@Model.Id">  Add to Cart </a>                                   
+                                <a href="/Home/Cart/@Model.Id">  Add to Cart </a>
                             </button>
                         </div>
                         <div class="col-md-5">
