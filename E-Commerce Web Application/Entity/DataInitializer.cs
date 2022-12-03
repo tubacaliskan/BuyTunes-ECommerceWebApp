@@ -12,12 +12,11 @@ namespace E_Commerce_Web_Application.Entity
         {
             List<MainCategory> mainCategories = new List<MainCategory>()
             {
-                new MainCategory(){Name = "Telli", Description = "Telli Çalgılar"},
-                new MainCategory(){Name = "Vurmalı", Description = "Vurmalı Çalgılar"},
-                new MainCategory(){Name = "Tuşlu", Description = "Tuşlu Çalgılar"},
-                new MainCategory(){Name = "Zilli", Description = "Zilli Çalgılar"},
-                new MainCategory(){Name = "Üflemeli", Description = "Üflemeli Çalgılar"},
-                new MainCategory(){Name = "ürün yok", Description = "ürün yok"}
+                new MainCategory(){MainCategoryName = "Telli", Description = "Telli Çalgılar"},
+                new MainCategory(){MainCategoryName = "Vurmalı", Description = "Vurmalı Çalgılar"},
+                new MainCategory(){MainCategoryName = "Tuşlu", Description = "Tuşlu Çalgılar"},
+                new MainCategory(){MainCategoryName = "Zilli", Description = "Zilli Çalgılar"},
+                new MainCategory(){MainCategoryName = "Üflemeli", Description = "Üflemeli Çalgılar"},
             };
             foreach (var mainCategory in mainCategories)
             {
@@ -27,13 +26,12 @@ namespace E_Commerce_Web_Application.Entity
 
             List<Category> categories = new List<Category>()
             {
-                 new Category(){Name = "Keman", Description = "Keman Ürünleri", MainCategoryId = 1},
-                 new Category(){Name = "Gitar", Description = "Gitar Ürünleri",  MainCategoryId = 1},
-                 new Category(){Name = "Saz", Description = "Saz Ürünleri",  MainCategoryId = 1},
-                 new Category(){Name = "Flut", Description = "Flut Ürünleri", MainCategoryId = 2},
-                 new Category(){Name = "Davul", Description = "Davul Ürünleri",  MainCategoryId = 3},
-                 new Category(){Name = "Zurna", Description = "Zurna Ürünleri", MainCategoryId = 2},
-                 new Category(){Name = "ürün yok", Description = "ürün yok", MainCategoryId = 6}
+                 new Category(){CategoryName = "Keman", Description = "Keman Ürünleri", MainCategoryId = 1},
+                 new Category(){CategoryName = "Gitar", Description = "Gitar Ürünleri",  MainCategoryId = 1},
+                 new Category(){CategoryName = "Saz", Description = "Saz Ürünleri",  MainCategoryId = 1},
+                 new Category(){CategoryName = "Flut", Description = "Flut Ürünleri", MainCategoryId = 5},
+                 new Category(){CategoryName = "Davul", Description = "Davul Ürünleri",  MainCategoryId = 2},
+                 new Category(){CategoryName = "Zurna", Description = "Zurna Ürünleri", MainCategoryId = 5},
             };
 
             foreach (var category in categories)
