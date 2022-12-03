@@ -10,6 +10,7 @@ using E_Commerce_Web_Application.Entity;
 
 namespace E_Commerce_Web_Application.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductController : Controller
     {
         private DataContext db = new DataContext();

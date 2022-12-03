@@ -1,5 +1,8 @@
-﻿using System;
+﻿using E_Commerce_Web_Application.Entity;
+using E_Commerce_Web_Application.Identity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +19,8 @@ namespace E_Commerce_Web_Application
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Database.SetInitializer(new DataInitializer());
+            Database.SetInitializer(new IdentityDataInitializer());
         }
     }
 }

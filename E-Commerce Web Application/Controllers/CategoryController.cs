@@ -8,8 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using E_Commerce_Web_Application.Entity;
 
+
 namespace E_Commerce_Web_Application.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class CategoryController : Controller
     {
         private DataContext db = new DataContext();
