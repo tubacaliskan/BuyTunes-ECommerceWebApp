@@ -1,0 +1,59 @@
+﻿@using E_Commerce_Web_Application.Models;
+@model  FavorityModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container mt-5">
+
+    <h5 class="mt-0">Your Favorities</h5>
+
+    @if (Model.FavorityLines.Count > 0)
+    {
+        <div class="row mt-3 mb-5">
+            @foreach (var item in Model.FavorityLines)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="/Theme/Image/@item.Product.ProductImage" class="card-img-top" alt="@item.Product.ProductName">
+                        <div class="card-body">
+                            <h5 class="card-title"> <a href="/Home/Product/@item.Product.Id">@item.Product.ProductName </a></h5>
+                            <p class="card-text">@item.Product.ProductDescription</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/Home/Product/@item.Product.Id" class="btn btn-primary btn-sm float-right"> <i class="fa fa-chevron-right" aria-hidden="true"></i> Product Details</a>
+                            <small class="text-muted ProductPrice">@item.Product.ProductPrice.ToString("c") <i class="fa fa-try" aria-hidden="true"></i></small>
+                            @using (Html.BeginForm("RemoveFromFavority", "Favority"))
+                            {
+                                @Html.Hidden("Id", item.Product.Id)
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    Delete Product
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class=" text-md-left">
+            <div class="row m-sm-1 mt-5">
+                <div class="col-md-3"> <a href="/" class="btn btn-outline-primary mx-1">Let's Continue Shopping</a> </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert" style="width: 200%">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <strong> There are no items in your Favorities</strong>
+        </div>
+    }
+
+
+</div>
+

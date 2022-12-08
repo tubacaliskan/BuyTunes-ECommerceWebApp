@@ -1,0 +1,27 @@
+﻿body {
+}
+
+.jumbotron{
+    background-image: url("../Image/cello2Background.jpg");
+    background-size : cover;
+    height: 100%
+}
+.card-img-top {
+
+    height: 100%
+}
+
+.write-review {
+    margin-left: 50px;
+    box
+    
+}
+#Product-prices{
+    font-size: 28px;
+    color:darkred;
+}
+.ProductPrice {
+    color: darkred;
+    font-weight: 700;
+    font-size: 17px;
+}
