@@ -60,16 +60,25 @@
                     </div>
                     <div class="row mt-1">
                         <div class="col-md-4">
-                            <button class="btn btn-success">
-                                <i class="fa-solid fa-cart-shopping fa-fw" style="color: var(--fa-navy);"> </i>
-                                <a href="/Home/Cart/@Model.Id">  Add to Cart </a>
-                            </button>
+                            @using (Html.BeginForm("AddToCart", "Cart"))
+                            {
+                                @Html.HiddenFor(i => i.Id)
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa-solid fa-cart-shopping fa-fw" style="color: var(--fa-navy);"> </i>
+                                    Add to Cart
+                                </button>
+                            }
                         </div>
                         <div class="col-md-5">
-                            <button class="btn btn-danger">
-                                <i class="fa-solid fa-heart fa-fw" style="color: var(--fa-navy);"></i>
-                                <a href="/Home/Favorities/@Model.Id">Add to Favorities </a>
-                            </button>
+                            @using (Html.BeginForm("AddToFavority", "Favority"))
+                            {
+                                @Html.HiddenFor(i => i.Id)
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-heart fa-fw" style="color: var(--fa-navy);"></i>
+                                    Add to Favorities
+                                </button>
+                            }
+
                         </div>
                     </div>
                 </div>

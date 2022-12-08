@@ -25,25 +25,14 @@ namespace E_Commerce_Web_Application.Controllers
                     ProductDescription= i.ProductDescription.Length > 50 ? i.ProductDescription.Substring(0,47) + "..." : i.ProductDescription,
                     ProductCode= i.ProductCode,
                     ProductHome = i.ProductHome,
-                    ProductPrice= i.ProductPrice,
+                    ProductPrice= i.ProductPrice.ToString(),
                     ProductStoct = i.ProductStoct
 
                 }).ToList();
             return View(product);
         }
 
-        public ActionResult Login2()
-        {
-
-            return View();
-        }
-
-        public ActionResult Register2()
-        {
-
-            return View();
-        }
-        public ActionResult ProductList(int? id) // burada shop vardı //ürünlerin listelenmesi için yapıldı
+        public ActionResult ProductList(int? id) 
         {
             var product = _context.Products.
                Where(i => i.ProductIsApproved).
@@ -56,7 +45,7 @@ namespace E_Commerce_Web_Application.Controllers
                    ProductDescription = i.ProductDescription.Length > 50 ? i.ProductDescription.Substring(0, 47) + "..." : i.ProductDescription,
                    ProductCode = i.ProductCode,
                    ProductHome = i.ProductHome,
-                   ProductPrice = i.ProductPrice,
+                   ProductPrice = i.ProductPrice.ToString(),
                    ProductStoct = i.ProductStoct
 
                }).AsQueryable();
@@ -69,23 +58,8 @@ namespace E_Commerce_Web_Application.Controllers
             // nedenini tam anlamadım.
             return View(product.ToList());
         }
-        public ActionResult Favorities()  // metod favorilere eklenmiş ürünü listeler 
-        {
-            //  -> favorilere ekleme kısmı ekstra bir sayfaya gerek duyulmadığı için ürünün detayları kısmında yapılabilir
-            // burası ekstra sayfaya ihtiyaç duyulduğu için controller'da method oluşturuldu
-            // list fonksiyonu belki burda kullanılabilir
-            return View();
-        }
-        public ActionResult Cart() // metod sepete eklenmiş ürünü listeler 
-        {
-            //  -> sepete ekleme kısmı ekstra bir sayfaya gerek duyulmadığı için ürünün detayları kısmında yapılabilir
-            // burası ekstra sayfaya ihtiyaç duyulduğu için controller'da method oluşturuldu
-            // list fonksiyonu belki burda kullanılabilir
-            return View();
-        }
 
-        public ActionResult Product(int id) // ürünü ayrı sayfada görmek için belki ek bunun için ekstra controller oluşturulur.
-            // favorilere ve sepet ekleme işlemi burada yapılıyor
+        public ActionResult Product(int id) 
         {
 
             return View(_context.Products.Where(i => i.Id == id).FirstOrDefault());

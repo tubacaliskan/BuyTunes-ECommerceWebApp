@@ -157,14 +157,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup1.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminOrderController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FavorityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\DataContext.cs" />
     <Compile Include="Entity\DataInitializer.cs" />
+    <Compile Include="Entity\EnumOrderState.cs" />
     <Compile Include="Entity\MainCategory.cs" />
+    <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,26 +178,22 @@
     <Compile Include="Identity\ApplicationUser.cs" />
     <Compile Include="Identity\IdentityDataContex.cs" />
     <Compile Include="Identity\IdentityDataInitializer.cs" />
+    <Compile Include="Models\AdminOrderModel.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\FavorityModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MainCategoryModel.cs" />
+    <Compile Include="Models\OrderDetailsModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\ShippingDetails.cs" />
+    <Compile Include="Models\UserOrderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\login.css" />
-    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\1.jpg" />
     <Content Include="images\arrow.png" />
     <Content Include="images\close.png" />
@@ -213,12 +214,6 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -258,10 +253,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Shop.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -272,11 +263,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Login2.cshtml" />
-    <Content Include="Views\Home\Register2.cshtml" />
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Home\Favorities.cshtml" />
-    <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\GetCategories.cshtml" />
     <Content Include="Views\Home\GetMainCategories.cshtml" />
@@ -299,6 +287,15 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Favority\Index.cshtml" />
+    <Content Include="Views\Cart\Completed.cshtml" />
+    <Content Include="Views\Cart\Completed2.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\AdminOrder\Index.cshtml" />
+    <Content Include="Views\AdminOrder\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,12 +3,30 @@
 
     @if (Request.IsAuthenticated)
     {
-        <li class="nav-item active">
-            <a class="nav-link" href="/">@User.Identity.Name</a>
+        <li class="nav-item active mx-1">
+            <a class="nav-link btn btn-outline-light" href="/Account/Index">@User.Identity.Name <i class="fa fa-user" aria-hidden="true"></i></a>
         </li>
-        <li class="nav-item active">
-            <a class="nav-link btn btn-danger" href="/Account/Logout">Log Out<span class="fa fa-user-circle-o"></span></a>
+        <li class="nav-item active mx-1">
+            <a class="nav-link btn btn-outline-danger" href="/Favority/Index">Favorities <i class="fa fa-heart" aria-hidden="true"></i></a>
         </li>
+        <li class="nav-item active mx-1">
+            <a class="nav-link btn btn-danger" href="/Account/Logout">Log Out <span class="fa fa-user-circle-o"></span></a>
+        </li>
+        if (User.IsInRole("admin"))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle btn btn-outline-secondary" href="" role="button" data-toggle="dropdown" aria-expanded="false">
+                   Admin Panel
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/Product/Index">Product</a>
+                    <a class="dropdown-item" href="/Category/Index">Category</a>
+                    <a class="dropdown-item" href="/MainCategory/Index">Main Category</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/AdminOrder/Index">Main Page</a>
+                </div>
+            </li>
+        }
 
     }
     else

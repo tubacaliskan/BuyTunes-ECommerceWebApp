@@ -15,6 +15,8 @@ namespace E_Commerce_Web_Application.Controllers
 {
     public class AccountController : Controller
     {
+        private DataContext db = new DataContext();
+
         private UserManager<ApplicationUser> UserManager;
         private RoleManager<ApplicationRole> RoleManager;
 
@@ -26,6 +28,50 @@ namespace E_Commerce_Web_Application.Controllers
             var roleStore = new RoleStore<ApplicationRole>(new IdentityDataContex());
             RoleManager = new RoleManager<ApplicationRole>(roleStore);
 
+        }
+        [Authorize]
+        public ActionResult Index()
+        {
+
+            var orders = db.Orders.Where(i => i.UserName == User.Identity.Name).Select(i => new UserOrderModel()
+            {
+                Id = i.Id,
+                OrderNumber = i.OrderNumber,
+                OrderDate = i.OrderDate,
+                OrderState = i.OrderState,
+                Total = i.Total
+            }).OrderByDescending(i => i.OrderDate).ToList();
+
+            return View(orders);
+        }
+        [Authorize]
+        public ActionResult Details(int id)
+        {
+            var entity = db.Orders.Where(i => i.Id == id).Select(i => new OrderDetailsModel()
+            {
+                OrderId = i.Id,
+                OrderNumber = i.OrderNumber,
+                OrderDate = i.OrderDate,
+                Total = i.Total,
+                OrderLines = i.OrderLines.Select(a=> new OrderLineModel()
+                {
+                    ProductId= a.ProductId,
+                    ProductName = a.Product.ProductName,
+                    ProductImage = a.Product.ProductImage,
+                    ProductPrice= a.Product.ProductPrice,
+                    Quantity = a.Quantity
+                }).ToList(),
+                UserName = User.Identity.Name,
+                AddressTitle = i.AddressTitle,
+                CustumerCity = i.CustumerCity,
+                CustumerZıpCode = i.CustumerZıpCode,
+                CustumerAdress= i.CustumerAdress,
+                CustumerAdress2= i.CustumerAdress2,
+                OrderState= i.OrderState,
+
+            }).FirstOrDefault();
+
+            return View(entity);
         }
 
         // GET: Account
@@ -82,7 +128,7 @@ namespace E_Commerce_Web_Application.Controllers
             {
                 // Login işelmleri
 
-                var user= UserManager.Find(model.UserName, model.CustumerPassword);
+                var user = UserManager.Find(model.UserName, model.CustumerPassword);
 
                 if (user != null)
                 {

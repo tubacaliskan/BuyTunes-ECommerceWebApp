@@ -16,7 +16,7 @@ namespace E_Commerce_Web_Application.Entity
         [DisplayName("Product Description")]
         public string ProductDescription { get; set; }
         [DisplayName("Product Price")]
-        public string ProductPrice { get; set; }
+        public int ProductPrice { get; set; }
         [DisplayName("Product Image")]
         public string ProductImage { get; set; }
         [DisplayName("Product Stock")]

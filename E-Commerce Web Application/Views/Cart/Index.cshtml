@@ -1,0 +1,65 @@
+﻿@using E_Commerce_Web_Application.Models;
+@model  Cart
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container mt-5">
+
+    <h5 class="mt-0">Shopping Cart</h5>
+
+    @if (Model.CartLines.Count > 0)
+    {
+        <div class="row mt-3 mb-5">
+            @foreach (var item in Model.CartLines)
+            {
+                <div class="d-flex position-relative">
+                    <img src="/Theme/Image/@item.Product.ProductImage" class="flex-shrink-0 me-3 mx-3" alt="...">
+                    <div>
+                        <h5 class="mt-0">@item.Product.ProductName</h5>
+                        <p> @item.Product.ProductDescription</p>
+
+                        <div class="row mx-2">
+                            <div class="col-md-2 mx-1" > <a href="/Home/Product/@item.Product.Id" class="btn btn-primary mx-1">Product Details</a> </div>
+                            <div class="col-md-2 mx-1 btn btn-outline-success"> @item.Quantity Quantitiy </div>
+                            <div class="col-md-2 mx-1 btn btn-outline-success"> @item.Product.ProductPrice.ToString("c") </div>
+                            <div class="col-md-2 mx-1 btn btn-outline-success"> SubTotal: @((item.Product.ProductPrice*item.Quantity).ToString("c")) </div>
+
+                            @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                            {
+                                @Html.Hidden("Id", item.Product.Id)
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    Delete Product
+                                </button>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class=" text-md-left">
+            <div class="row m-sm-1 mt-5">
+                <div class="col-md-3"> <a href="/" class="btn btn-outline-primary mx-1">Let's Continue Shopping</a> </div>
+                <div class="col-md-3 mx-1 btn btn-outline-success"> Total Price: @Model.TotalPrice().ToString("c") </div>
+                <div class="col-md-3"> <a href="/Cart/Checkout" class="btn btn-outline-primary mx-1"> Confirm Cart</a> </div>
+            </div>
+        </div>
+       
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert" style="width: 280%">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <strong> There are no items in your cart</strong>
+        </div>
+    }
+
+
+</div>

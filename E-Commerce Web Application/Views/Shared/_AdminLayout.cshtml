@@ -42,7 +42,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">Admin Panel</a>
+            <a class="navbar-brand" href="/AdminOrder/Index">Admin Panel</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -51,7 +51,7 @@
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/Home/Shop">Orders<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/AdminOrder/Index">Orders<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Product/Index">Products</a>
@@ -65,14 +65,13 @@
                             <a class="dropdown-item" href="/Category/Index">Category</a>
                             <a class="dropdown-item" href="/MainCategory/Index">Main Category</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="/AdminOrder/Index">Orders</a>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">User Panel</a>
+                    </li>
                 </ul>
-                <form class="form-inline my-1 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-5 my-sm-0" type="submit">Search</button>
-                </form>
                 @Html.Partial("_LoginLayout")
             </div>
         </div>
