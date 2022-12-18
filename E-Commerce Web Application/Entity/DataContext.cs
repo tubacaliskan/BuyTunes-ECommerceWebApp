@@ -18,6 +18,8 @@ namespace E_Commerce_Web_Application.Entity
         public DbSet<MainCategory> MainCategories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
+        public DbSet<RegisterCustomer> RegisterCustomers { get; set; }
+        //public DbSet<AspNetUsers> AspNetUser { get; set; }
 
     }
 }

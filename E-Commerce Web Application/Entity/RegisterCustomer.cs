@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
-namespace E_Commerce_Web_Application.Models
+namespace E_Commerce_Web_Application.Entity
 {
-    public class RegisterCustumer
+    public class RegisterCustomer
     {
         //public int CustumerId { get; set; }
         [Required]
@@ -18,6 +18,7 @@ namespace E_Commerce_Web_Application.Models
         public string CustumerSurname { get; set; }
         [Required]
         [DisplayName("Your user Name")]
+        [Key]
         public string UserName { get; set; }
         [Required]
         [DisplayName("Your E mail")]
@@ -39,7 +40,7 @@ namespace E_Commerce_Web_Application.Models
         [Required]
         [DisplayName("Your City")]
         public string CustumerCity { get; set; }
-  
+
         [DisplayName("Your Zıp Code")]
         public string CustumerZıpCode { get; set; }
 
@@ -49,7 +50,6 @@ namespace E_Commerce_Web_Application.Models
         public string CustumerAdress2 { get; set; }
         [DisplayName("City's State")]
         public string CustumerState { get; set; }
-        [DisplayName("Remember me")]
         public bool RememberMe { get; set; }
     }
 }

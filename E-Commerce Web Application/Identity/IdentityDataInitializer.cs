@@ -53,6 +53,7 @@ namespace E_Commerce_Web_Application.Identity
 
                 var user = new ApplicationUser() { Name = "Mehmet Fatih", Surname = "Gülmez", UserName = "mfgulmez", Email = "mehmet.fatih.gulmez@outlook.com" };
                 manager.Create(user, "123456");
+                manager.AddToRole(user.Id, "admin");
                 manager.AddToRole(user.Id, "user");
             }
 

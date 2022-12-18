@@ -171,6 +171,7 @@
     <Compile Include="Entity\MainCategory.cs" />
     <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\RegisterCustomer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -296,6 +297,8 @@
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\AdminOrder\Index.cshtml" />
     <Content Include="Views\AdminOrder\Details.cshtml" />
+    <Content Include="Views\Account\EditProfile.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

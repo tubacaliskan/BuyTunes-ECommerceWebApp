@@ -10,13 +10,17 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin.Security;
 using System.Net.Http.Headers;
+using System.Data.Entity;
+using System.Net;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace E_Commerce_Web_Application.Controllers
 {
     public class AccountController : Controller
     {
         private DataContext db = new DataContext();
-
+    
         private UserManager<ApplicationUser> UserManager;
         private RoleManager<ApplicationRole> RoleManager;
 
@@ -74,6 +78,70 @@ namespace E_Commerce_Web_Application.Controllers
             return View(entity);
         }
 
+        public ActionResult EditProfile()
+        {
+
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            RegisterCustomer profile = db.RegisterCustomers.Find(User.Identity.Name);
+            if (profile == null)
+            {
+                return HttpNotFound();
+            }
+            //return View(profile);
+
+            //var profile = db.RegisterCustomers.Where(i => i.UserName == id).Select(i => new RegisterCustomer()
+            //{
+            //    UserName = i.UserName,
+            //    CustumerName = i.CustumerName,
+            //    CustumerSurname = i.CustumerSurname,
+            //    CustumerEmail = i.CustumerEmail,
+            //    CustumerPhone = i.CustumerPhone,
+            //    CustumerPassword = i.CustumerPassword,
+            //    CustumerRePassword = i.CustumerRePassword,
+            //    CustumerAdress = i.CustumerAdress,
+            //    CustumerAdress2 = i.CustumerAdress2,
+            //    CustumerCity = i.CustumerCity,
+            //    CustumerGender = i.CustumerGender,
+            //    CustumerState = i.CustumerState,
+            //    CustumerZıpCode = i.CustumerZıpCode
+            //}).FirstOrDefault();
+
+            return View(profile);
+
+            //RegisterCustomer profile = db.RegisterCustomers.Find(id);
+            //return View(profile);
+        }
+
+        // POST: RegisterCustomer/Edit/5
+        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
+        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile(
+        [Bind(Include = "CustumerName,CustumerSurname,UserName,CustumerEmail,CustumerPhone,CustumerPassword,CustumerRePassword,CustumerGender,CustumerCity, CustumerZıpCode, CustumerAdress, CustumerAdress2, CustumerState")] 
+        RegisterCustomer profile)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(profile).State = EntityState.Modified;
+                db.SaveChanges();
+
+                TempData["message"] = "Information Updated";
+                return RedirectToAction("EditProfile");
+            }
+
+            return View(profile);
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
+
         // GET: Account
         public ActionResult Register()
         {
@@ -82,7 +150,7 @@ namespace E_Commerce_Web_Application.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] // /cs html de ki yollnana antiforgeryToken ile çalışır. oaradan gelen bilgi ile buradaki tutuyır mu diye kontrol eder
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterCustomer model)
         {
             if (ModelState.IsValid)
             {
@@ -95,6 +163,11 @@ namespace E_Commerce_Web_Application.Controllers
                 user.UserName = model.UserName;
 
                 var result = UserManager.Create(user, model.CustumerPassword);
+                //string connstring = ConfigurationManager.ConnectionStrings["itmall"].ConnectionString;
+
+                //SqlConnection con = new SqlConnection(connstring);
+                db.RegisterCustomers.Add(model);
+                db.SaveChanges();
 
                 if (result.Succeeded)
                 {

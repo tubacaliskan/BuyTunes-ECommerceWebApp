@@ -1,0 +1,30 @@
+﻿@using E_Commerce_Web_Application.Entity
+@model  RegisterCustomer
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class=" container mt-5">
+
+
+
+    <h4>Profile</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5 class="card-title btn btn-warning"> <a href="/Account/Index"> View Your Orders  </a></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title btn btn-warning"> <a href="/Account/EditProfile"> Edit Your Profile</a></h5>
+            @*@Html.ActionLink("Edit Your Profile", "EditProfile", new { id = User.Identity.Name }, new { @class = "col-md-4 mx-1 btn btn-outline-success" })*@
+
+            @*<a href="@Url.Action("EditProfile", "Account", new { id = Model.UserName })" class="btn btn-warning" role="button">Buy</a>*@
+        </div>
+    </div>
+
+
+
+</div>
+
