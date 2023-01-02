@@ -77,7 +77,7 @@ namespace E_Commerce_Web_Application.Controllers
 
             return View(entity);
         }
-
+        [Authorize]
         public ActionResult EditProfile()
         {
 
@@ -90,29 +90,9 @@ namespace E_Commerce_Web_Application.Controllers
             {
                 return HttpNotFound();
             }
-            //return View(profile);
-
-            //var profile = db.RegisterCustomers.Where(i => i.UserName == id).Select(i => new RegisterCustomer()
-            //{
-            //    UserName = i.UserName,
-            //    CustumerName = i.CustumerName,
-            //    CustumerSurname = i.CustumerSurname,
-            //    CustumerEmail = i.CustumerEmail,
-            //    CustumerPhone = i.CustumerPhone,
-            //    CustumerPassword = i.CustumerPassword,
-            //    CustumerRePassword = i.CustumerRePassword,
-            //    CustumerAdress = i.CustumerAdress,
-            //    CustumerAdress2 = i.CustumerAdress2,
-            //    CustumerCity = i.CustumerCity,
-            //    CustumerGender = i.CustumerGender,
-            //    CustumerState = i.CustumerState,
-            //    CustumerZıpCode = i.CustumerZıpCode
-            //}).FirstOrDefault();
 
             return View(profile);
 
-            //RegisterCustomer profile = db.RegisterCustomers.Find(id);
-            //return View(profile);
         }
 
         // POST: RegisterCustomer/Edit/5
