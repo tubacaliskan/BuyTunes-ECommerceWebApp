@@ -1,0 +1,93 @@
+﻿@model E_Commerce_Web_Application.Entity.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container mt-4">
+
+    <h2>Details Of Product</h2>
+
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model._Category.MainCategory)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model._Category.MainCategory)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductImage)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductStoct)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductStoct)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductIsApproved)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductIsApproved)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductHome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductHome)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) 
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+    </p>
+</div>

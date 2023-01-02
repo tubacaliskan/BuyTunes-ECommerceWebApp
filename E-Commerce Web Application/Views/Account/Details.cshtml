@@ -1,0 +1,59 @@
+﻿@using E_Commerce_Web_Application.Models;
+@model  OrderDetailsModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container mt-5">
+    <h5 class="mt-0">Order Details</h5>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Order State</dt>
+        <dd class="col-sm-9">@Model.OrderState</dd>
+
+        <dt class="col-sm-3">Order Id</dt>
+        <dd class="col-sm-9">@Model.OrderId</dd>
+
+        <dt class="col-sm-3">Order Number</dt>
+        <dd class="col-sm-9">@Model.OrderNumber</dd>
+
+        <dt class="col-sm-3">Order Date</dt>
+        <dd class="col-sm-9">@Model.OrderDate</dd>
+
+        <dt class="col-sm-3">Order Total Price</dt>
+        <dd class="col-sm-9">@Model.Total</dd>
+
+        <dt class="col-sm-3">Address</dt>
+        <dd class="col-sm-9">
+            <p>@Model.AddressTitle</p>
+            <p>@Model.CustumerCity - @Model.CustumerState - @Model.CustumerZıpCode</p>
+            <p>@Model.CustumerAdress</p>
+            <p>@Model.CustumerAdress2</p>
+            <p>@Model.CustumerState</p>
+        </dd>
+
+    </dl>
+    <h5 class="mt-0">Products</h5>
+    <div class="row">
+
+        @foreach (var item in Model.OrderLines)
+        {
+            <div class="d-flex position-relative">
+                <img src="/Theme/Image/@item.ProductImage" class="flex-shrink-0 me-3 mx-3" alt="...">
+                <div>
+                    <h5 class="mt-0">@item.ProductName</h5>
+                    <p> @item.ProductDescription</p>
+
+                    <div class="row mx-2">
+                        <div class="col-md-2 mx-1"> <a href="/Home/Product/@item.ProductId" class="btn btn-primary mx-1">Product Details</a> </div>
+                        <div class="col-md-2 mx-1 btn btn-outline-success"> @item.Quantity Quantitiy </div>
+                        <div class="col-md-2 mx-1 btn btn-outline-success"> @item.ProductPrice.ToString("c") </div>
+                        <div class="col-md-2 mx-1 btn btn-outline-success"> SubTotal: @((item.ProductPrice*item.Quantity).ToString("c")) </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
